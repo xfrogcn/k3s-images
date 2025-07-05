@@ -34,6 +34,18 @@ docker pull registry.cn-hangzhou.aliyuncs.com/k3s-hb/prometheus:v3.4.2
 docker tag registry.cn-hangzhou.aliyuncs.com/k3s-hb/prometheus:v3.4.2 quay.io/prometheus/prometheus:v3.4.2
 docker save -o prometheus.tar quay.io/prometheus/prometheus:v3.4.2
 
+docker pull registry.cn-hangzhou.aliyuncs.com/k3s-hb/kube-state-metrics:v2.16.0
+docker tag registry.cn-hangzhou.aliyuncs.com/k3s-hb/kube-state-metrics:v2.16.0 registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0
+docker save -o kube-state-metrics.tar registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0
+
+docker pull registry.cn-hangzhou.aliyuncs.com/k3s-hb/grafana:12.0.2
+docker tag registry.cn-hangzhou.aliyuncs.com/k3s-hb/grafana:12.0.2 docker.io/grafana/grafana:12.0.2
+docker save -o grafana.tar docker.io/grafana/grafana:12.0.2
+
+docker pull registry.cn-hangzhou.aliyuncs.com/k3s-hb/k8s-sidecar:1.30.5
+docker tag registry.cn-hangzhou.aliyuncs.com/k3s-hb/k8s-sidecar:1.30.5 quay.io/kiwigrid/k8s-sidecar:1.30.5
+docker save -o k8s-sidecar.tar quay.io/kiwigrid/k8s-sidecar:1.30.5
+
 ----
 
 ctr -n k8s.io images import busybox.tar
@@ -45,3 +57,6 @@ ctr -n k8s.io images import prometheus-operator.tar
 ctr -n k8s.io images import prometheus-config-reloader.tar
 ctr -n k8s.io images import thanos.tar
 ctr -n k8s.io images import prometheus.tar
+ctr -n k8s.io images import kube-state-metrics.tar
+ctr -n k8s.io images import grafana.tar
+ctr -n k8s.io images k8s-sidecar.tar
