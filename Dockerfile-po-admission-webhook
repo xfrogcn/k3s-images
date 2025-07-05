@@ -1,1 +1,1 @@
-FROM quay.io/prometheus-operator/admission-webhook
+FROM quay.io/prometheus-operator/admission-webhook:v0.83.0
