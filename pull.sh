@@ -46,6 +46,10 @@ docker pull registry.cn-hangzhou.aliyuncs.com/k3s-hb/k8s-sidecar:1.30.5
 docker tag registry.cn-hangzhou.aliyuncs.com/k3s-hb/k8s-sidecar:1.30.5 quay.io/kiwigrid/k8s-sidecar:1.30.5
 docker save -o k8s-sidecar.tar quay.io/kiwigrid/k8s-sidecar:1.30.5
 
+docker pull registry.cn-hangzhou.aliyuncs.com/k3s-hb/node-exporter:v1.9.1
+docker tag registry.cn-hangzhou.aliyuncs.com/k3s-hb/node-exporter:v1.9.1 quay.io/prometheus/node-exporter:v1.9.1
+docker save -o node-exporter.tar quay.io/prometheus/node-exporter:v1.9.1
+
 ----
 
 ctr -n k8s.io images import busybox.tar
@@ -60,3 +64,4 @@ ctr -n k8s.io images import prometheus.tar
 ctr -n k8s.io images import kube-state-metrics.tar
 ctr -n k8s.io images import grafana.tar
 ctr -n k8s.io images k8s-sidecar.tar
+ctr -n k8s.io images node-exporter.tar
